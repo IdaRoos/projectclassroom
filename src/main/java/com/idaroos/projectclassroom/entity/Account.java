@@ -29,14 +29,10 @@ private Timestamp updated;
     @JoinColumn(name = "user_id")
 private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name= "authority_id")
-    private Authority authority;
-
-    @OneToMany(mappedBy = "account",
-            cascade = CascadeType.ALL,
+    @ManyToOne(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY)
-    private List<Authority> authorityList;
+    @JoinColumn(name = "authority_id")
+    private Authority authority;
 
 
     @OneToMany(mappedBy = "account",
@@ -104,12 +100,12 @@ private User user;
         this.user = user;
     }
 
-    public List<Authority> getAuthorityList() {
-        return authorityList;
+    public Authority getAuthority() {
+        return authority;
     }
 
-    public void setAuthorityList(List<Authority> authorityList) {
-        this.authorityList = authorityList;
+    public void setAuthority(Authority authority) {
+        this.authority = authority;
     }
 
     public List<UserCourse> getUserCourseList() {
@@ -128,13 +124,7 @@ private User user;
         this.userGradeList = userGradeList;
     }
 
-    public Authority getAuthority() {
-        return authority;
-    }
 
-    public void setAuthority(Authority authority) {
-        this.authority = authority;
-    }
 
     // define Stringmethod
 

@@ -19,12 +19,12 @@ public class UserGrade {
     private String grade;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "course_id")
     private Course course;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "username")
-    private Account accountList;
+    private Account account;
 
     // define constructors
 
@@ -62,12 +62,12 @@ public class UserGrade {
         this.course = course;
     }
 
-    public Account getAccountList() {
-        return accountList;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setAccountList(Account accountList) {
-        this.accountList = accountList;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     // define stringMethod
