@@ -1,17 +1,17 @@
 package com.idaroos.projectclassroom.service;
 
-import com.idaroos.projectclassroom.dao.TeacherCourseRepository;
 import com.idaroos.projectclassroom.dao.UserRepository;
 import com.idaroos.projectclassroom.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository){
@@ -24,17 +24,25 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findById(int id) {
-        return null;
+        Optional<User> result = userRepository.findById(id);
+        User user;
+
+        if(result.isPresent()) {
+            user = result.get();
+        } else {
+            throw new RuntimeException("Did not find the user with id: " + id);
+        }
+
+        return user;
     }
 
     @Override
-    public User save(User user) {
-        return null;
+    public void save(User user) {
     }
 
     @Override
     public String update(User user) {
-        return null;
+        return "User " + user.getFirstName() + " has been updated.";
     }
 
     @Override
