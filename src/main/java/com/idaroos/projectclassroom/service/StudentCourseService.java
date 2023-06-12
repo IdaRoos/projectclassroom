@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface StudentCourseService {
 
-    void save(StudentCourse StudentCourse);
+    void save(StudentCourse studentCourse);
 
     String update(StudentCourse studentCourse);
 

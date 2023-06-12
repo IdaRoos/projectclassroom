@@ -18,27 +18,29 @@ public class StudentCourseServiceImpl implements StudentCourseService{
         this.studentCourseRepository = studentCourseRepository;
     }
     @Override
-    public void save(StudentCourse StudentCourse) {
-
+    public void save(StudentCourse studentCourse) {
+studentCourseRepository.save(studentCourse);
     }
 
     @Override
     public String update(StudentCourse studentCourse) {
-        return null;
+        studentCourseRepository.save(studentCourse);
+        return "Student's grade has been successfully updated.";
     }
 
     @Override
     public void delete(StudentCourse studentCourse) {
+        studentCourseRepository.delete(studentCourse);
 
     }
 
     @Override
     public List<StudentCourse> findAllStudentsByCourseId(int id) {
-        return null;
+        return studentCourseRepository.findAllStudentsByCourseId(id);
     }
 
     @Override
     public List<StudentCourse> findAllCoursesByUsername(String username) {
-        return null;
+        return studentCourseRepository.findAllCoursesByUsername(username);
     }
 }

@@ -13,15 +13,20 @@ import java.util.Optional;
 @Service
 public class AccountServiceImpl implements AccountService {
 
-    private AccountRepository accountRepository;
+    private final AccountRepository accountRepository;
 
     @Autowired
-    public AccountServiceImpl(AccountRepository AccountRepository){
+    public AccountServiceImpl(AccountRepository accountRepository){
         this.accountRepository = accountRepository;
     }
     @Override
+    public List<Account> findAllByOrderByAuthorityId(int id) {
+        return accountRepository.findAllByOrderByAuthorityId(id);
+    }
+
+    @Override
     public List<Account> findAll() {
-        return accountRepository.findAllByOrderByAuthorityId();
+        return accountRepository.findAll();
     }
 
     @Override
@@ -41,16 +46,19 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void save(Account account) {
+        accountRepository.save(account);
 
     }
 
     @Override
     public String update(Account account) {
+        accountRepository.save(account);
         return "Account with username " + account.getUsername() + " has been updated successfully.";
     }
 
     @Override
     public void delete(Account account) {
+        accountRepository.delete(account);
 
     }
 }

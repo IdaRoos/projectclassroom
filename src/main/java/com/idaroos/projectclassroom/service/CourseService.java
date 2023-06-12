@@ -10,7 +10,7 @@ public interface CourseService {
 
     void save(Course course);
 
-    String update(Course Course);
+    String update(Course course);
 
     void delete(Course course);
 
