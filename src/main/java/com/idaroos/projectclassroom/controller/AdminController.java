@@ -1,7 +1,9 @@
 package com.idaroos.projectclassroom.controller;
 
 
+import com.idaroos.projectclassroom.entity.Course;
 import com.idaroos.projectclassroom.entity.User;
+import com.idaroos.projectclassroom.service.CourseService;
 import com.idaroos.projectclassroom.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +18,10 @@ public class AdminController {
 
     UserService userService;
 
-    public AdminController(UserService userService) {
+    CourseService courseService;
+    public AdminController(UserService userService, CourseService courseService) {
         this.userService = userService;
+        this.courseService = courseService;
     }
 
     @GetMapping("/showFormForAdd")
@@ -30,12 +34,31 @@ public class AdminController {
         return "userform";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute("user") User newUser){
         // save the User
         userService.save(newUser);
         // use a redirect to prevent duplicate submissions
         return "redirect:/classroom/admin/showFormForAdd";
+    }
+
+    @GetMapping("/addCourse")
+    public String addCourse(Model theModel){
+// create model attribute to bind form data
+        Course newCourse= new Course();
+
+        theModel.addAttribute("course", newCourse);
+
+        return "courseform";
+    }
+
+
+    @PostMapping("/saveCourse")
+    public String saveUser(@ModelAttribute("user") Course newCourse){
+        // save the User
+        courseService.save(newCourse);
+        // use a redirect to prevent duplicate submissions
+        return "redirect:/classroom/admin/addCourse";
     }
 
 }

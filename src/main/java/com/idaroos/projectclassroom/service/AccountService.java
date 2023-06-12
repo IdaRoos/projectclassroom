@@ -8,7 +8,7 @@ import java.util.List;
 public interface AccountService {
 
 
-    List<Account> findAllByOrderByAuthorityId(int id);
+    List<Account> findAllByOrderByAuthorityId();
     List<Account> findAll();
 
     Account findByUsername(String username);

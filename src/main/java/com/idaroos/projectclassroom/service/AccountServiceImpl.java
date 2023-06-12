@@ -20,8 +20,8 @@ public class AccountServiceImpl implements AccountService {
         this.accountRepository = accountRepository;
     }
     @Override
-    public List<Account> findAllByOrderByAuthorityId(int id) {
-        return accountRepository.findAllByOrderByAuthorityId(id);
+    public List<Account> findAllByOrderByAuthorityId() {
+        return accountRepository.findAllByOrderByAuthorityId();
     }
 
     @Override

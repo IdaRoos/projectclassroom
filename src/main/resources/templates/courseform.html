@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add a course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<h1>Add a course</h1>
+
+<form action="#" th:action="@{/classroom/admin/saveCourse}"
+      th:object="${course}" method="POST">
+
+    <!--        Add hidden form field to handle the update-->
+
+    <input type="hidden" th:field="*{id}">
+
+    <input type="text" th:field="*{courseName}" placeholder="Course name">
+
+    <button type="submit">Save</button>
+    <hr>
+
+</form>
+
+<a href="/classroom/home">Home</a>
+</body>
+
+</html>

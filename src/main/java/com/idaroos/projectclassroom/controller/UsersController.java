@@ -36,12 +36,19 @@ public class UsersController {
     public String showUsersList(Model theModel) {
         // get the employees from db
         List<User> theUsers = userService.findAllByLastName();
-
+List<Account> theAccounts = accountService.findAllByOrderByAuthorityId();
         // add to the spring model
         theModel.addAttribute("users", theUsers);
+        theModel.addAttribute("accounts", theAccounts);
+
+        for(Account tempAccount : theAccounts) {
+            System.out.println(tempAccount);
+            System.out.println(tempAccount.getAuthority().getId());
+        }
 
         return "userList";
     }
+
 
     @PostMapping("/createAccount")
     public String createAccount(@RequestParam int userId) {
