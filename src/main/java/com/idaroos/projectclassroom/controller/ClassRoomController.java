@@ -41,13 +41,4 @@ public class ClassRoomController {
         return "redirect:/classroom/showFormForAdd";
     }
 
-    @GetMapping("/users")
-    public String showStudentList(){
-        return "userList";
-    }
-
-    @GetMapping("/createAccount")
-    public String createAccount() {
-        return "redirect:/classroom/userList";
-    }
 }
