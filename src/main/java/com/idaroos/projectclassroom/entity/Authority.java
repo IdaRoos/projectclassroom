@@ -32,7 +32,12 @@ public class Authority {
     }
 
     public Authority(String authority) {
+
         this.authority = authority;
+    }
+
+    public Authority(int id){
+        this.id = id;
     }
 
     // define setters and getters
@@ -69,6 +74,7 @@ public class Authority {
         return "Authority{" +
                 "id=" + id +
                 ", authority='" + authority + '\'' +
+                ", accountList=" + accountList +
                 '}';
     }
 }

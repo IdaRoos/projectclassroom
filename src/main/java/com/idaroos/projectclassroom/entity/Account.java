@@ -49,12 +49,11 @@ private User user;
 
     }
 
-    public Account(String username, String password, Timestamp created, Timestamp updated, User user) {
+    public Account(String username, String password, Timestamp created, Timestamp updated) {
         this.username = username;
         this.password = password;
         this.created = created;
         this.updated = updated;
-        this.user = user;
     }
 
     // define getters and setters

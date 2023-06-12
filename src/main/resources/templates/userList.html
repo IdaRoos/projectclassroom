@@ -14,6 +14,7 @@
 <!-- Lägg till extra  funktioner för admin -->
 
 <a href="/classroom/home">Home</a>
+
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -25,7 +26,7 @@
                 Last name
             </th>
             <th scope="col" class="px-6 py-3">
-                Email
+                email
             </th>
             <th scope="col" class="px-6 py-3">
                 Action
@@ -33,21 +34,19 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="tempUser : ${users}"class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+        <tr th:each="tempUser : ${users}" class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
             <th th:text="${tempUser.firstName}" scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-            </th>
-            <td th:text="${tempUser.lastName}"></td>
-            <td th:text="${tempUser.email}"> </td>
 
+            </th>
+            <td th:text="${tempUser.lastName}" class="px-6 py-4"></td>
+            <td th:text="${tempUser.email}" class="px-6 py-4"></td>
             <td class="px-6 py-4">
-                <form action="#" th:action="@{/classroom/createAccount}">
+                <form action="#" th:action="@{/classroom/users/createAccount}" method="POST">
+                    <input type="hidden" name="userId" th:value="*{tempUser.getId()}">
                     <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Create Account</button>
                 </form>
             </td>
         </tr>
-
-
-
         </tbody>
     </table>
 </div>
