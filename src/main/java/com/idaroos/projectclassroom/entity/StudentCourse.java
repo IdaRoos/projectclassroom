@@ -2,11 +2,9 @@ package com.idaroos.projectclassroom.entity;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
-@Table(name = "user_grade")
-public class UserGrade {
+@Table(name = "student_course")
+public class StudentCourse {
 
 // define fields
 
@@ -28,11 +26,11 @@ public class UserGrade {
 
     // define constructors
 
-    public UserGrade() {
+    public StudentCourse() {
 
     }
 
-    public UserGrade(String grade) {
+    public StudentCourse(String grade) {
         this.grade = grade;
     }
 

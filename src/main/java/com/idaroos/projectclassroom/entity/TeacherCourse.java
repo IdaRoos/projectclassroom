@@ -3,11 +3,9 @@ package com.idaroos.projectclassroom.entity;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
-@Table(name = "user_course")
-public class UserCourse {
+@Table(name = "teacher_course")
+public class TeacherCourse {
 
     // define fields
 
@@ -26,7 +24,7 @@ public class UserCourse {
     private Course course;
 
 
-    public UserCourse(){
+    public TeacherCourse(){
 
     }
 

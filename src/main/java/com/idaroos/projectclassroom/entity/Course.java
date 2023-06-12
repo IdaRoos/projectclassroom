@@ -22,12 +22,12 @@ public class Course {
     @OneToMany(mappedBy = "course",
     cascade = CascadeType.ALL,
     fetch = FetchType.LAZY)
-    private List<UserCourse> userCourseList;
+    private List<TeacherCourse> teacherCourseList;
 
     @OneToMany(mappedBy = "course",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY)
-    private List<UserGrade> userGradeList;
+    private List<StudentCourse> studentCourseList;
 
 
     // define constructors
@@ -58,20 +58,20 @@ public class Course {
         this.courseName = courseName;
     }
 
-    public List<UserCourse> getUserCourseList() {
-        return userCourseList;
+    public List<TeacherCourse> getUserCourseList() {
+        return teacherCourseList;
     }
 
-    public void setUserCourseList(List<UserCourse> userCourseList) {
-        this.userCourseList = userCourseList;
+    public void setUserCourseList(List<TeacherCourse> teacherCourseList) {
+        this.teacherCourseList = teacherCourseList;
     }
 
-    public List<UserGrade> getUserGradeList() {
-        return userGradeList;
+    public List<StudentCourse> getUserGradeList() {
+        return studentCourseList;
     }
 
-    public void setUserGradeList(List<UserGrade> userGradeList) {
-        this.userGradeList = userGradeList;
+    public void setUserGradeList(List<StudentCourse> studentCourseList) {
+        this.studentCourseList = studentCourseList;
     }
 
     // Define StringMethod
