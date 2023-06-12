@@ -9,12 +9,15 @@ public interface UserService {
 
     List<User> findAll();
 
+    List<User> findAllByLastName();
+
     User findById(int id);
 
     void save(User user);
 
     String update(User user);
     void delete(User user);
+
 
 
 }

@@ -51,6 +51,13 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    public void createNewAccount(User user) {
+
+
+//        save(account);
+    }
+
+    @Override
     public String update(Account account) {
         accountRepository.save(account);
         return "Account with username " + account.getUsername() + " has been updated successfully.";

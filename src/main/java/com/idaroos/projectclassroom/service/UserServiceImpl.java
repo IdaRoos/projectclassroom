@@ -17,10 +17,18 @@ public class UserServiceImpl implements UserService {
     public UserServiceImpl(UserRepository userRepository){
         this.userRepository = userRepository;
     }
+
+
     @Override
     public List<User> findAll() {
-        return userRepository.findAllByOrderByLastname();
+        return userRepository.findAll();
     }
+
+    @Override
+    public List<User> findAllByLastName() {
+        return userRepository.findAllByOrderByLastNameAsc();
+    }
+
 
     @Override
     public User findById(int id) {

@@ -15,6 +15,8 @@ public interface AccountService {
 
     void save(Account account);
 
+    void createNewAccount(User user);
+
     String update(Account account);
     void delete(Account account);
 }
