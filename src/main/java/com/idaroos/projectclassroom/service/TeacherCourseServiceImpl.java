@@ -20,8 +20,15 @@ public class TeacherCourseServiceImpl implements TeacherCourseService{
     }
     @Override
     public void save(TeacherCourse teacherCourse) {
-        teacherCourseRepository.save(teacherCourse);
+        List<TeacherCourse> teacherCourseList = findAll();
 
+        for (TeacherCourse theTeacherCourse : teacherCourseList) {
+            if (theTeacherCourse.getCourse() == teacherCourse.getCourse() && theTeacherCourse.getAccount() == teacherCourse.getAccount()) {
+                throw new IllegalArgumentException("Course already assigned to this teacher");
+
+            }
+        }
+            teacherCourseRepository.save(teacherCourse);
     }
 
     @Override
@@ -44,5 +51,10 @@ return teacherCourseRepository.findAllTeachersByCourseId(id);
     @Override
     public List<TeacherCourse> findAllCoursesByUsername(String username) {
 return teacherCourseRepository.findAllCoursesByUsername(username);
+    }
+
+    @Override
+    public List<TeacherCourse> findAll() {
+        return teacherCourseRepository.findAll();
     }
 }

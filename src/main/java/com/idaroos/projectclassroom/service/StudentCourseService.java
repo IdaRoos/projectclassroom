@@ -17,4 +17,6 @@ public interface StudentCourseService {
 
     List<StudentCourse> findAllCoursesByUsername(String username);
 
+    List<StudentCourse> findAll();
+
 }

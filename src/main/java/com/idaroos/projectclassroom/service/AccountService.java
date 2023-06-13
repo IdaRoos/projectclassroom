@@ -21,4 +21,6 @@ public interface AccountService {
     void delete(Account account);
 
     Account findByUserId(int id);
+
+    List<Account> findAllByAuthorityId(int id);
 }

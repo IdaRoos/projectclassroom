@@ -17,4 +17,6 @@ public interface TeacherCourseService {
     List<TeacherCourse> findAllTeachersByCourseId(int id);
 
     List<TeacherCourse> findAllCoursesByUsername(String username);
+
+    List<TeacherCourse> findAll();
 }

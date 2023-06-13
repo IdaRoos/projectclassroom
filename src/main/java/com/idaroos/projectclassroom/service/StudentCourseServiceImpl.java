@@ -19,8 +19,18 @@ public class StudentCourseServiceImpl implements StudentCourseService{
     }
     @Override
     public void save(StudentCourse studentCourse) {
-studentCourseRepository.save(studentCourse);
-    }
+        List<StudentCourse> studentCourseList = findAll();
+        for(StudentCourse theStudentCourse : studentCourseList) {
+            if(theStudentCourse.getCourse() == studentCourse.getCourse() && theStudentCourse.getAccount() == studentCourse.getAccount()) {
+               throw new IllegalArgumentException("Course already assigned to this student");
+
+
+            }
+            studentCourseRepository.save(studentCourse);
+
+            }
+
+        }
 
     @Override
     public String update(StudentCourse studentCourse) {
@@ -42,5 +52,10 @@ studentCourseRepository.save(studentCourse);
     @Override
     public List<StudentCourse> findAllCoursesByUsername(String username) {
         return studentCourseRepository.findAllCoursesByUsername(username);
+    }
+
+    @Override
+    public List<StudentCourse> findAll() {
+        return studentCourseRepository.findAll();
     }
 }
