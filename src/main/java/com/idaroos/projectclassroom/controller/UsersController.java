@@ -15,6 +15,7 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/classroom/users")
@@ -34,17 +35,8 @@ public class UsersController {
 
     @GetMapping("")
     public String showUsersList(Model theModel) {
-        // get the employees from db
-        List<User> theUsers = userService.findAllByLastName();
-List<Account> theAccounts = accountService.findAllByOrderByAuthorityId();
-        // add to the spring model
-        theModel.addAttribute("users", theUsers);
-        theModel.addAttribute("accounts", theAccounts);
-
-        for(Account tempAccount : theAccounts) {
-            System.out.println(tempAccount);
-            System.out.println(tempAccount.getAuthority().getId());
-        }
+        List<Map<String, Object>> usersWithAuthorities = userService.findAllUsersWithAuthorities();
+        theModel.addAttribute("usersWithAuthorities", usersWithAuthorities);
 
         return "userList";
     }

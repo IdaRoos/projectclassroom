@@ -2,6 +2,8 @@ package com.idaroos.projectclassroom.service;
 
 import com.idaroos.projectclassroom.entity.Authority;
 
+import java.util.List;
+
 public interface AuthorityService {
 
    void save(Authority authority);
@@ -11,4 +13,6 @@ public interface AuthorityService {
    void delete(Authority authority);
 
    Authority findById(int id);
+
+   List<Authority> findAll();
 }
