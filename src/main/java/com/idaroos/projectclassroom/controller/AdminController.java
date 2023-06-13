@@ -96,7 +96,7 @@ public class AdminController {
         return "redirect:/classroom/users";
     }
 
-    @GetMapping(/systems)
+    @GetMapping("/systems")
     public String showSystemsPage(){
         return "adminsystems";
     }
