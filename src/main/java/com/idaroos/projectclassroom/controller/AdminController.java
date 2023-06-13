@@ -1,26 +1,35 @@
 package com.idaroos.projectclassroom.controller;
 
 
+import com.idaroos.projectclassroom.entity.Account;
 import com.idaroos.projectclassroom.entity.Course;
 import com.idaroos.projectclassroom.entity.User;
+import com.idaroos.projectclassroom.service.AccountService;
+import com.idaroos.projectclassroom.service.AuthorityService;
 import com.idaroos.projectclassroom.service.CourseService;
 import com.idaroos.projectclassroom.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Controller
-@RequestMapping("/classroom/admin")
+@RequestMapping("/admin")
 public class AdminController {
 
     UserService userService;
 
+    AccountService accountService;
+
+    AuthorityService authorityService;
+
     CourseService courseService;
-    public AdminController(UserService userService, CourseService courseService) {
+    public AdminController(UserService userService,AccountService accountService, AuthorityService authorityService, CourseService courseService) {
         this.userService = userService;
+        this.accountService = accountService;
+        this.authorityService = authorityService;
         this.courseService = courseService;
     }
 
@@ -39,7 +48,7 @@ public class AdminController {
         // save the User
         userService.save(newUser);
         // use a redirect to prevent duplicate submissions
-        return "redirect:/classroom/admin/showFormForAdd";
+        return "redirect:/admin/showFormForAdd";
     }
 
     @GetMapping("/addCourse")
@@ -58,7 +67,22 @@ public class AdminController {
         // save the User
         courseService.save(newCourse);
         // use a redirect to prevent duplicate submissions
-        return "redirect:/classroom/admin/addCourse";
+        return "redirect:/admin/addCourse";
+    }
+
+    @PostMapping("/createAccount")
+    public String createAccount(@RequestParam int userId) {
+
+        User user = userService.findById(userId);
+        // create new account object
+        Account account = new Account(user.getFirstName(), user.getFirstName(), Timestamp.valueOf(LocalDateTime.now()), null);
+
+        account.setAuthority(authorityService.findById(1));
+        account.setUser(user);
+
+        // save account object
+        accountService.save(account);
+        return "redirect:/classroom/users";
     }
 
 }
