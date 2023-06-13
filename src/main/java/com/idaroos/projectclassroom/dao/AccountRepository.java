@@ -10,4 +10,7 @@ public interface AccountRepository extends JpaRepository<Account, String> {
 
     @Query(value = "SELECT * FROM account ORDER BY authority_id DESC", nativeQuery = true)
     List<Account> findAllByOrderByAuthorityId();
+
+    @Query(value = "SELECT * FROM account WHERE user_id = ?", nativeQuery = true)
+    Account findByUserId(int userId);
 }

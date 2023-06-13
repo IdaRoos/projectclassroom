@@ -68,4 +68,9 @@ public class AccountServiceImpl implements AccountService {
         accountRepository.delete(account);
 
     }
+
+    @Override
+    public Account findByUserId(int id) {
+        return accountRepository.findByUserId(id);
+    }
 }

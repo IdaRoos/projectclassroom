@@ -71,18 +71,34 @@ public class AdminController {
     }
 
     @PostMapping("/createAccount")
-    public String createAccount(@RequestParam int userId) {
+    public String createAccount(@RequestParam int userId, @RequestParam int authorityId) {
 
         User user = userService.findById(userId);
         // create new account object
         Account account = new Account(user.getFirstName(), user.getFirstName(), Timestamp.valueOf(LocalDateTime.now()), null);
 
-        account.setAuthority(authorityService.findById(1));
+        account.setAuthority(authorityService.findById(authorityId));
         account.setUser(user);
 
         // save account object
         accountService.save(account);
         return "redirect:/classroom/users";
+    }
+
+    @PostMapping("/updateRole")
+    public String updateAccountRole(@RequestParam int userId, @RequestParam int authorityId){
+        Account account = accountService.findByUserId(userId);
+
+        account.setAuthority(authorityService.findById(authorityId));
+
+        accountService.save(account);
+
+        return "redirect:/classroom/users";
+    }
+
+    @GetMapping(/systems)
+    public String showSystemsPage(){
+        return "adminsystems";
     }
 
 }

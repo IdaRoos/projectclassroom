@@ -13,8 +13,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Query(value = "SELECT user.*, authority.authority, account.username "
             + "FROM user "
-            + "JOIN account ON user.id = account.user_id "
-            + "JOIN authority ON account.authority_id = authority.id "
+            + "LEFT JOIN account ON user.id = account.user_id "
+            + "LEFT JOIN authority ON account.authority_id = authority.id "
             + "ORDER BY FIELD(authority.id, 2, 1), user.id", nativeQuery = true)
     List<Map<String, Object>> findAllUsersWithAuthorities();
 }
