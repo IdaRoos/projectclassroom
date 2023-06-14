@@ -4,6 +4,7 @@ import com.idaroos.projectclassroom.entity.StudentCourse;
 import com.idaroos.projectclassroom.entity.User;
 
 import java.util.List;
+import java.util.Map;
 
 public interface StudentCourseService {
 
@@ -18,5 +19,7 @@ public interface StudentCourseService {
     List<StudentCourse> findAllCoursesByUsername(String username);
 
     List<StudentCourse> findAll();
+
+    List<Map<String, Object>> findCourseAndTeacherByStudentUsername(String username);
 
 }

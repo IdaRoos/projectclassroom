@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class StudentCourseServiceImpl implements StudentCourseService{
@@ -57,5 +58,10 @@ public class StudentCourseServiceImpl implements StudentCourseService{
     @Override
     public List<StudentCourse> findAll() {
         return studentCourseRepository.findAll();
+    }
+
+    @Override
+    public List<Map<String, Object>> findCourseAndTeacherByStudentUsername(String username) {
+        return studentCourseRepository.findCourseAndTeacherByStudentUsername(username);
     }
 }

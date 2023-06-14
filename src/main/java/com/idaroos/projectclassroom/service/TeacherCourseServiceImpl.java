@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class TeacherCourseServiceImpl implements TeacherCourseService{
@@ -43,8 +44,8 @@ teacherCourseRepository.delete(teacherCourse);
     }
 
     @Override
-    public List<TeacherCourse> findAllTeachersByCourseId(int id) {
-return teacherCourseRepository.findAllTeachersByCourseId(id);
+    public String findTeacherNameByCourseId(int id) {
+return teacherCourseRepository.findTeacherNameByCourseId(id);
 
     }
 
@@ -56,5 +57,10 @@ return teacherCourseRepository.findAllCoursesByUsername(username);
     @Override
     public List<TeacherCourse> findAll() {
         return teacherCourseRepository.findAll();
+    }
+
+    @Override
+    public List<Map<String, Object>> findCourseAndTeacherByTeacherUsername(String username) {
+        return teacherCourseRepository.findCourseAndTeacherByTeacherUsername(username);
     }
 }

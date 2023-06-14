@@ -15,17 +15,17 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminController {
 
-    UserService userService;
+    private UserService userService;
 
-    AccountService accountService;
+    private AccountService accountService;
 
-    AuthorityService authorityService;
+   private AuthorityService authorityService;
 
-    CourseService courseService;
+    private CourseService courseService;
 
-    StudentCourseService studentCourseService;
+   private StudentCourseService studentCourseService;
 
-    TeacherCourseService teacherCourseService;
+    private TeacherCourseService teacherCourseService;
     public AdminController(UserService userService,AccountService accountService, AuthorityService authorityService, CourseService courseService, StudentCourseService studentCourseService, TeacherCourseService teacherCourseService) {
         this.userService = userService;
         this.accountService = accountService;
